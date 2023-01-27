@@ -26,6 +26,10 @@ router.get('/hall', function(req, res, next) {
     res.render('hall/index');
 });
 
+router.get('/repo', function(req, res, next) {
+    res.render('repo/index');
+});
+
 
 
 
