@@ -15,28 +15,17 @@ a {
     color: #a047b6;
 }
 
-/* li {
-    list-style-type: none;
-} */
-
 
 nav {
     display: flex;
-    align-items: left;
+    align-items: center;
     justify-content: space-between;
-}
-
-.nav-container {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
 }
 
 .nav-bar a {
     padding: 8px;
     margin-left: 70px;
-    font-size: 25px;
+    /* font-size: 25px; */
 }
 
 .nav-container {
@@ -44,6 +33,7 @@ nav {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .subtitle {
@@ -53,7 +43,7 @@ nav {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
@@ -79,11 +69,17 @@ nav {
     bottom: 0;
     width: auto;
     height: auto;
+    text-align: center;
+}
+
+footer p {
+    text-align: center;
 }
 
 .text-muted {
     margin: 20px 0;
     font-size: 18px;
+    text-align: center;
 }
 
 .animacao {
