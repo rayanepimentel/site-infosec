@@ -14,6 +14,10 @@ router.get('/cronograma', function(req, res, next) {
     res.render('cronograma/index');
 });
 
+router.get('/parte1', function(req, res, next) {
+    res.render('cronograma/parteUm');
+});
+
 
 
 
