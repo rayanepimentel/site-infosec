@@ -4,10 +4,10 @@ html {
 }
 
 body {
-    padding: 50px;
+    /* padding: 10px; */
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 20px;
 }
 
 a {
@@ -17,14 +17,6 @@ a {
 
 li {
     list-style-type: none;
-}
-
-li:hover,
-.active {
-    /* background-color:#4f037e!important; */
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: #353236;
 }
 
 
@@ -44,6 +36,7 @@ nav {
 .nav-bar a {
     padding: 8px;
     margin-left: 70px;
+    font-size: 25px;
 }
 
 .nav-container {

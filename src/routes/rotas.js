@@ -6,9 +6,14 @@ router.get('/', function(req, res, next) {
     res.render('index');
   });
 
-  router.get('/sobre', function(req, res, next) {
+router.get('/sobre', function(req, res, next) {
     res.render('sobre');
-  });
+});
+
+router.get('/cronograma', function(req, res, next) {
+    res.render('cronograma/index');
+});
+
 
 
 
