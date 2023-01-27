@@ -23,6 +23,12 @@ nav {
     justify-content: space-between;
 }
 
+.nav-bar a:hover {
+    background-color: #222831;
+    color: #a047b6;
+    border-radius: 10px;
+}
+
 .nav-bar a {
     padding: 8px;
     margin-left: 70px;
