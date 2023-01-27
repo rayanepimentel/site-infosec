@@ -13,6 +13,7 @@ body {
 a {
     text-decoration: none;
     color: #a047b6;
+    -webkit-text-stroke-width: 1px;
 }
 
 
