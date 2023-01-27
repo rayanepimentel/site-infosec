@@ -19,8 +19,11 @@ router.get('/parte1', function(req, res, next) {
 });
 
 router.get('/cronograma/:page', function(req, res, next) {
-    console.log(`Getting page ${req.params.page}`);
     res.render(`cronograma/${req.params.page}`);
+});
+
+router.get('/hall', function(req, res, next) {
+    res.render('hall/index');
 });
 
 
