@@ -34,6 +34,10 @@ router.get('/sobre', function(req, res, next) {
     res.render('sobre/index');
 });
 
+router.get('/repo/:page', function(req, res, next) {
+    res.render(`repo/${req.params.page}`);
+});
+
 
 
 
