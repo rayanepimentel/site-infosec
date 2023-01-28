@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
     res.render('index');
   });
 
-router.get('/sobre', function(req, res, next) {
-    res.render('sobre');
+router.get('/whereAmI', function(req, res, next) {
+    res.render('whereAmI');
 });
 
 router.get('/cronograma', function(req, res, next) {
@@ -28,6 +28,10 @@ router.get('/hall', function(req, res, next) {
 
 router.get('/repo', function(req, res, next) {
     res.render('repo/index');
+});
+
+router.get('/sobre', function(req, res, next) {
+    res.render('sobre/index');
 });
 
 
