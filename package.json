@@ -1,6 +1,6 @@
 {
     "name": "infosec-iniciante",
-    "homepage": "https://rayanepimentel.github.io/site-infosec/",
+    "homepage": "https://infosec-iniciante.onrender.com",
     "version": "1.0.0",
     "description": "Repositório de estudo em pt-br de InfoSec.",
     "main": "server.js",
@@ -17,5 +17,9 @@
         "mongoose": "^6.9.0",
         "nodemon": "^2.0.20",
         "pug": "^3.0.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rayanepimentel/site-infosec"
     }
 }
