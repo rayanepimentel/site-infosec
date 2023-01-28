@@ -1,5 +1,6 @@
 {
     "name": "infosec-iniciante",
+    "homepage": "https://rayanepimentel.github.io/site-infosec/",
     "version": "1.0.0",
     "description": "Repositório de estudo em pt-br de InfoSec.",
     "main": "server.js",
