@@ -1,0 +1,26 @@
+extends ../../publico/nav
+
+block content	
+  .container
+    .title
+      h1 Osintgram_
+    p #[a(href='/repo/ferramentas' style='font-size: xx-large; color: #9778c4') &#x02190;]
+
+    p "OSINTGRAM uma ferramenta criada por Datalux no seu repositório no Github, criada exclusivamente para fins educativos, que nos permite coletar informações sobre o usuário que queremos do Instagram, ‼️ desde que a conta desse usuário seja pública ou uma conta privada que seguimos. ‼️" - #[a(href='https://www.instagram.com/p/Cn-Ng-HuXbS/', target="_blank") Secure Code&#x2197;]
+  
+    p Você precisa fazer o clone do projeto e seguir as instruções que estão aqui: #[a(href='https://github.com/Datalux/Osintgram' target="_blank") Github&#x2197;]
+  .container
+    p
+      code
+        | python3 main.py  &lt;username&gt; --command &lt;command&gt;
+    p
+
+    p ou 
+
+    p
+      code
+        | python3 main.py  &lt;username&gt; -c &lt;command&gt;
+    p
+
+
+
