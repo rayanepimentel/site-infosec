@@ -11,7 +11,9 @@ body {
     font-size: 20px;
 }
 
-
+hr {
+    width: 1000px;
+}
 
 a {
     text-decoration: none;
@@ -92,6 +94,17 @@ footer p {
     font-size: 18px;
     text-align: center;
 }
+
+
+code, pre {
+	font: 15px "Roboto Mono", mono;
+    background-color: #222831;
+    color: #9778c4;
+	border-radius: 3px;
+    font-size: 20px;
+    width: 1100px;
+}
+
 
 .animacao {
     animation: go-back 1s infinite alternate;

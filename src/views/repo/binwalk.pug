@@ -1,0 +1,61 @@
+extends ../../publico/nav
+
+block content	
+  .container
+    .title
+      a(href='/repo/estenografia' style='font-size: xx-large') &larr; 
+      p Ferramenta: BINWALK_
+      p "Um arquivo dentro de um arquivo."
+
+    p Quando precisamos analisar se existe um arquivo(pode ser .txt, imagem, html, qualquer arquivo) "oculto" dentro de outro, podemos usar a ferramenta binwalk.
+
+  .container 
+    .title 
+      h3 Como instalar e usar:
+    ol 
+     li Você precisa fazer o clone do projeto: #[a(href='https://github.com/ReFirmLabs/binwalk', target="blank") Binwalk&#x2197;]
+     li E instalar conforme a instrução.
+     li Como descobrir se existe um arquivo dentro de outro arquivo?
+     p feito a instalação, você vai digitar no terminal:
+     <code>binwalk caminho/nomeDoArquivo.extensao </code>
+
+     p Exemplo: <code> binwalk /Users/infosec/Downloads/exemplo.jpeg</code>
+     p Se retornar algo assim:
+     li
+
+       <pre> DECIMAL       HEXADECIMAL     DESCRIPTION                                       
+       <pre> -------------------------------------------------------------------------------- 
+       pre  0             0x0             JPEG image data, JFIF standard 1.01       
+     p é porque a ferramenta não conseguiu identificar nenhum arquivo escondido. 
+     li Se retornar assim:
+       <pre> DECIMAL       HEXADECIMAL     DESCRIPTION
+       <pre> --------------------------------------------------------------------------------
+       <pre> 0             0x0             PNG image, 780 x 720, 8-bit/color RGBA, non-interlaced
+       <pre> 41            0x29            Zlib compressed data, best compression
+       pre 153493        0x25795         PNG image, 802 x 118, 8-bit/color RGBA, non-interlaced
+     p Indica que temos algo aqui.
+     li Agora vamos extrair:
+       p Extraindo manualmente:
+       <code> -D ou -dd= &lt;Tipo:Extensão:Comando&gt; </code>
+
+       p Regra para extrair:
+
+       p Tipo:Extensão:Comando
+
+       <pre> - Tipo: string, em “caixa baixa”, para informar o tipo do arquivo que se quer extrair;
+       <pre> - Extensão: define qual será a extensão que o arquivo será salvo no diretório. 
+       <pre> Por padrão, o binwalk não coloca nenhuma extensão;
+       <pre> - Comando: é um argumento opcional para ser executado após a extração para o diretório.
+        pre - Para extrair todos os arquivos usamos: ".*"
+      
+     p exemplo:
+       <code> binwalk --extract --dd=".*" caminho/nomeDoArquivo.extensao</code>
+     li Sabendo disso, vamos extrair todos os arquivos, como o comando acima. 
+     li Ao extrair o binwalk cria um diretório com os arquivos extraídos.
+     li Agora é abrir o diretório extraído _NomDoArquivo.jpeg.extracted. E analisar se realmente tem algo "importante" para a sua análise.
+  
+  .container 
+    h4 Quer treinar? No CTFLearn, uma plataforma gratuita de desafios, tem um desafio  que usamos o binwalk para descobrir a flag.
+    p #[a(href='https://ctflearn.com/challenge/108', target="blank") CTFLearn Binwalk&#x2197;]
+
+  
