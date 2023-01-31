@@ -1,5 +1,6 @@
 extends ../../publico/nav
 
+
 block content	
   .container
     .title
@@ -7,55 +8,101 @@ block content
       p Ferramenta: BINWALK_
       p "Um arquivo dentro de um arquivo."
 
-    p Quando precisamos analisar se existe um arquivo(pode ser .txt, imagem, html, qualquer arquivo) "oculto" dentro de outro, podemos usar a ferramenta binwalk.
+    p.corDestaque Quando precisamos analisar se existe um arquivo "oculto" dentro de outro, podemos usar a ferramenta binwalk.
+    p O Binwalk é uma ferramenta de código aberto para realizar análise, engenharia reversa e extração de imagens de #[a(href='#firmare') firmware*].  
 
+   
+  h3.subtitle.subInicio Como instalar e usar:
   .container 
-    .title 
-      h3 Como instalar e usar:
-    ol 
-     li Você precisa fazer o clone do projeto: #[a(href='https://github.com/ReFirmLabs/binwalk', target="blank") Binwalk&#x2197;]
-     li E instalar conforme a instrução.
-     li Como descobrir se existe um arquivo dentro de outro arquivo?
-     p feito a instalação, você vai digitar no terminal:
-     <code>binwalk caminho/nomeDoArquivo.extensao </code>
+    h4.sub → 1. Instalar
+    
+    p Você precisa fazer o clone do projeto e instalar conforme a instrução: #[a(href='https://github.com/ReFirmLabs/binwalk', target="blank") Binwalk&#x2197;]
+    
+    h4.sub → 2. Como usar
+    p Como descobrir se existe um arquivo dentro de outro arquivo?
+      p Feito a instalação você vai digitar no terminal:
+      <code>binwalk caminho/nomeDoArquivo.extensao </code>
 
-     p Exemplo: <code> binwalk /Users/infosec/Downloads/exemplo.jpeg</code>
-     p Se retornar algo assim:
-     li
+      p Exemplo: <code> binwalk /Users/infosec/Downloads/exemplo.jpeg</code>
+      p Se retornar algo assim:
+      li
 
-       <pre> DECIMAL       HEXADECIMAL     DESCRIPTION                                       
-       <pre> -------------------------------------------------------------------------------- 
-       pre  0             0x0             JPEG image data, JFIF standard 1.01       
-     p é porque a ferramenta não conseguiu identificar nenhum arquivo escondido. 
-     li Se retornar assim:
-       <pre> DECIMAL       HEXADECIMAL     DESCRIPTION
-       <pre> --------------------------------------------------------------------------------
-       <pre> 0             0x0             PNG image, 780 x 720, 8-bit/color RGBA, non-interlaced
-       <pre> 41            0x29            Zlib compressed data, best compression
-       pre 153493        0x25795         PNG image, 802 x 118, 8-bit/color RGBA, non-interlaced
-     p Indica que temos algo aqui.
-     li Agora vamos extrair:
-       p Extraindo manualmente:
-       <code> -D ou -dd= &lt;Tipo:Extensão:Comando&gt; </code>
+        <pre> DECIMAL       HEXADECIMAL     DESCRIPTION                                       
+        <pre> -------------------------------------------------------------------------------- 
+        pre  0             0x0             JPEG image data, JFIF standard 1.01       
+      p é porque a ferramenta não conseguiu identificar nenhum arquivo escondido. 
+      li Se retornar assim:
+        <pre> DECIMAL       HEXADECIMAL     DESCRIPTION
+        <pre> --------------------------------------------------------------------------------
+        <pre> 0             0x0          PNG image, 780 x 720, 8-bit/color RGBA, non-interlaced
+        <pre> 41            0x29         Zlib compressed data, best compression
+        pre 153493        0x25795       PNG image, 802 x 118, 8-bit/color RGBA, non-interlaced
+      p Indica que temos algo aqui.
+      h4.sub → 2.1 Agora vamos extrair.
+      p Extraindo manualmente:
+        <code> -D ou -dd= &lt;Tipo:Extensão:Comando&gt; </code>
 
-       p Regra para extrair:
+        p Regra para extrair:
 
-       p Tipo:Extensão:Comando
+        p Tipo:Extensão:Comando
 
-       <pre> - Tipo: string, em “caixa baixa”, para informar o tipo do arquivo que se quer extrair;
-       <pre> - Extensão: define qual será a extensão que o arquivo será salvo no diretório. 
-       <pre> Por padrão, o binwalk não coloca nenhuma extensão;
-       <pre> - Comando: é um argumento opcional para ser executado após a extração para o diretório.
-        pre - Para extrair todos os arquivos usamos: ".*"
-      
-     p exemplo:
-       <code> binwalk --extract --dd=".*" caminho/nomeDoArquivo.extensao</code>
-     li Sabendo disso, vamos extrair todos os arquivos, como o comando acima. 
-     li Ao extrair o binwalk cria um diretório com os arquivos extraídos.
-     li Agora é abrir o diretório extraído _NomDoArquivo.jpeg.extracted. E analisar se realmente tem algo "importante" para a sua análise.
+         center
+      table(width='100%', cellspacing='10px', cellpadding='10px', border='2px', bgcolor='#F2F2F2')
+        thead
+            tr
+              th Tipo:Extensão:Comando
+              th Descrição
+
+        tbody
+              tr
+                td Tipo
+                td string, em “caixa baixa”, para informar o tipo do arquivo que se quer extrair;
+              tr 
+                td Extensão
+                td Define qual será a extensão que o arquivo será salvo no diretório. Por padrão, o binwalk não coloca nenhuma extensão;
+              tr 
+                td Comando
+                td É um argumento opcional para ser executado após a extração para o diretório.
+              tr 
+                td Para extrair todos os arquivos
+                td ".*"
+    
+
+      p exemplo de extrair todos os arquivos:
+      p <code> binwalk --extract --dd=".*" caminho/nomeDoArquivo.extensao</code>
+      p Sabendo disso, vamos extrair todos os arquivos como o comando acima. 
+      p Ao extrair o binwalk cria um diretório com os arquivos extraídos.
+      p Agora é abrir o diretório extraído exemplo: _NomDoArquivo.jpeg.extracted. E verificar se realmente tem algo "importante" para a sua análise.
+    
+  h3.subtitle.subInicio Alguns comandos básicos do Binwalk incluem:
+  .container
+
+    li binwalk -e &lt;arquivo&gt;: extrai todos os arquivos encontrados em &lt;arquivo&gt; e salva-os em um diretório.
+
+    li binwalk -D &lt;tipo&gt;:&lt;nome&gt; &lt;arquivo&gt;: extrai apenas os arquivos do tipo especificado (por exemplo, "gzip") e os salva com o nome especificado.
+
+    li binwalk --dd=&lt;nome&gt;:&lt;tamanho&gt; &lt;arquivo&gt;: extrai um bloco de dados específico do arquivo e o salva com o nome especificado.
+
+    li binwalk -M &lt;arquivo&gt;: exibe uma saída detalhada sobre todos os arquivos encontrados no &lt;arquivo&gt;.
+
+    li binwalk --signature &lt;arquivo&gt;: busca assinaturas personalizadas em vez das assinaturas padrão.
+
+    p Estes são apenas alguns exemplos de comandos básicos. O Binwalk possui muitas outras opções e recursos avançados. Consulte a documentação do #[a(href='https://github.com/ReFirmLabs/binwalk', target="blank") Binwalk&#x2197;] para obter mais informações.
+    
+    p.obs *A análise de #[a() firmware] é o processo de recuperação, extração e análise do conteúdo de um firmware. Um firmware refere-se a um software (ou sistema operacional) executado em um dispositivo incorporado, como um roteador, câmera, geladeira etc. 
+
+  h3.subtitle.subInicio Referências:
+  .container
+    p #[a(href='https://www.linkedin.com/pulse/forense-analisando-arquivos-com-binwalk-bruno-izid%C3%B3rio/?originalSubdomain=pt' style="background-color: #F0E3B9; color: #222831; border-radius: 3px;", target="black") Bruno Izidório&#x2197;]
+    p #[a(href='https://github.com/ReFirmLabs/binwalk' style="background-color: #F0E3B9; color: #222831; border-radius: 3px;", target="blank") Binwalk&#x2197;]
   
+  h3.subtitle.subInicio Colocando em prática
   .container 
-    h4 Quer treinar? No CTFLearn, uma plataforma gratuita de desafios, tem um desafio  que usamos o binwalk para descobrir a flag.
+    h4#firmare Quer treinar? No CTFLearn, uma plataforma gratuita de desafios, tem um desafio  que usamos o binwalk para descobrir a flag.
     p #[a(href='https://ctflearn.com/challenge/108', target="blank") CTFLearn Binwalk&#x2197;]
+    
 
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Binwalk: Quando precisamos analisar se existe um arquivo(pode ser .txt, imagem, html, qualquer arquivo) &quot;oculto&quot; dentro de outro, podemos usar a ferramenta binwalk. Veja como aqui: " data-lang="pt" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+   
+
+
+  .subtitle!= tw("Binwalk: Quando precisamos analisar se existe um arquivo &quot;oculto&quot; dentro de outro, podemos usar a ferramenta binwalk. Veja como aqui: ")

@@ -3,7 +3,19 @@ extends ../../publico/nav
 block content	
   .container
     .title
-      h1 Repositórios e mais_
+      h1 Técnicas e mais_
+  h3.subtitle
+      a(name='tecnicas') Técnicas e ferramentas
+  .container
+      p  → Lista de técnicas e ferramentas: 
+      ul
+        li #[a(href='/repo/osint') Osint&#x2197;]
+        li #[a(href='/repo/estenografia') Estenografia&#x2197;]
+
+  h3.subtitle
+      a(name='artigo') Artigos
+  .container
+      p  → Lista de artigos, palestras... #[a(href='/repo/artigo') Artigos&#x2197;]
      
   h3.subtitle
       a(name='repo') Repositórios
@@ -15,16 +27,3 @@ block content
       a(name='hall') Hall da Infosec
   .container
       p  → Temos lista de pessoas e/comunidades que eu acompanho/participo: #[a(href='/hall') Hall&#x2197;]
-
-  h3.subtitle
-      a(name='artigo') Artigos
-  .container
-      p  → Lista de artigos, palestras... #[a(href='/repo/artigo') Artigos&#x2197;]
-
-  h3.subtitle
-      a(name='tecnicas') Técnicas
-  .container
-      p  → Lista de técnicas e ferramentas: 
-      ul
-        li #[a(href='/repo/osint') Osint&#x2197;]
-        li #[a(href='/repo/estenografia') Estenografia&#x2197;]
