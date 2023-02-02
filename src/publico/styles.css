@@ -67,6 +67,13 @@ nav {
     margin-right: auto;
 }
 
+.btn {
+    float:right;
+    max-width: 1000px;
+    margin-left: 20px;
+    margin-right: auto;
+}
+
 .container {
     max-width: 900px;
     margin-left: auto;
@@ -121,6 +128,7 @@ code, pre {
     background-color: #F0E3B9;
     -webkit-text-stroke-width: 1px;
 }
+
 
 .animacao {
     animation: go-back 1s infinite alternate;
